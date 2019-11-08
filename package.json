@@ -2,9 +2,10 @@
   "name": "web-scraper",
   "version": "1.0.0",
   "description": "web scraper",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
@@ -22,9 +23,11 @@
   "homepage": "https://github.com/lisanoetzel/web-scraper#readme",
   "dependencies": {
     "axios": "^0.19.0",
+    "body-parser": "^1.19.0",
     "cheerio": "^1.0.0-rc.3",
     "express": "^4.17.1",
     "express-handlebars": "^3.1.0",
-    "mongoose": "^5.7.9"
+    "mongoose": "^5.7.9",
+    "request": "^2.88.0"
   }
 }
