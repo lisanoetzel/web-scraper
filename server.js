@@ -12,6 +12,9 @@ var app = express();
 //Establishing Express Router
 var router = express.Router();
 
+//Requiring routes file to pass the router object
+require("./config/routes")(router);
+
 //Making public folder a static directory
 app.use(express.static(__dirname + "/public"));
 
@@ -29,7 +32,21 @@ app.use(bodyParser.urlencoded({
 //Passing all requests through the Router Middleware
 app.use(router);
 
-//Listening on etsablished ports
+//Deploying to remote database or local database
+var db = process.env.MONGODB_URI || "mongodb://localhost/mongoScraper";
+
+//Connecting mongoose to DB
+mongoose.connect(db, function(error){
+    //Log connection errors
+    if (error) {
+        console.log(error);
+    }
+    else {
+        console.log("Mongoose connection works");
+    }
+    });
+
+//Listening on established ports
 app.listen(PORT, function(){
     console.log("Listening on port: " + PORT);
 });
